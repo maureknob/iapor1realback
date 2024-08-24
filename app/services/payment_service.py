@@ -30,8 +30,9 @@ def create_preference(data):
 
 def process_payment(data):
     try:
-        print('Payload recebido:', data)  # Exibe os dados recebidos no console do servidor
-    
+        print('Payload recebido:', data)
+        
+        sdk = mercadopago.SDK(app.config['ACCESS_TOKEN'])
         payment_response = sdk.payment().create(data)
         return payment_response["response"]
     

@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from .routes.gpt import text_generation, image_generation, text_to_speech, speech_to_text
-from .routes.payment import create_preference
+from .routes.payment import create_preference, process_payment
 
 
 def create_app():
@@ -17,5 +17,6 @@ def create_app():
 
     # mercado pago blueprints
     app.register_blueprint(create_preference.bp)
+    app.register_blueprint(process_payment.bp)
 
     return app
